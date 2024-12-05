@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Todoリスト</title>
+</head>
+
+<body>
+	<h1>TODOリスト</h1>
+	<form>
+		<input type="text"/>
+		<button type="button">タスクの追加</button>
+	</form>
+	<div id="table">
+		<h2>未実行タスク</h2>
+		<ul class="task_list">
+			<li th:text="${task.unexecuted}"></li>
+		</ul>
+	</div>
+	<div id="table">
+		<h2>実行済みタスク</h2>
+		<ul class="task_list">
+			<li th:text="${task.executed}" ></li>
+		</ul>
+	</div>
+	<script src="main.js"></script>
+	<a href="/top">戻る</a>
+</body>
+</html>

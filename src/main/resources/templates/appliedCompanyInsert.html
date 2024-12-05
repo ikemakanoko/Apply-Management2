@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>応募済み企業追加ページ</title>
+	<style>
+		.error-message {
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>応募企業追加</h1>
+	<form action="" method="post" th:object="${appliedCompanyList}">
+		<p th:errors="*{name}" class="error-message"></p>
+		<p>企業名：
+			<input type="text" th:field="*{name}">
+		</p>
+
+		<p th:errors="*{established}" class="error-message"></p>
+		<p>創立年：
+			<input type="date" th:field="*{established}">
+		</p>
+
+		<p th:errors="*{president}" class="error-message"></p>
+		<p>社長：
+			<input type="text" th:field="*{president}">
+		</p>
+
+		<p th:errors="*{detail}" class="error-message"></p>
+		<p>詳細説明メモ：
+			<input type="text" th:field="*{detail}">
+		</p>
+
+		<p th:errors="*{salaly}" class="error-message"></p>
+		<p>給料：
+			<input type="number" th:field="*{salaly}">
+		</p>
+
+		<p th:errors="*{working_time}" class="error-message"></p>
+		<p>労働時間：
+			<input type="time" th:field="*{working_time}">時間
+		</p>
+
+		<p th:errors="*{applied}" class="error-message"></p>
+		<p>どこから応募：
+			<input type="text" th:field="*{applied}">
+		</p>
+
+		<input type="submit" value="追加">
+
+		<p><a href="/top">戻る</a></p>
+	</form>
+</body>
+
+</html>

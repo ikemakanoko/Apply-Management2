@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Todoリスト</title>
+</head>
+
+<body>
+	<h1>TODOリスト</h1>
+	<form action="/add" method="post">
+		<input type="text" name="executed">
+		<button type="submit">タスクの追加</button>
+	</form>
+	
+	<div id="table">
+		<h2>未実行タスク</h2>
+<!--		<ul　th:each="Todo : ${todo}">-->
+<!--			<li th:text="${task.taskName}"></li>-->
+<!--		</ul>-->
+	</div>
+	
+	<div id="table">
+		<h2>実行済みタスク</h2>
+<!--		<ul th:each="Todo : ${todo}">-->
+<!--			<li th:text="${task.taskName}" ></li>-->
+<!--		</ul>-->
+	</div>
+	
+	<script src="main.js"></script>
+	<a href="/top">戻る</a>
+</body>
+</html>

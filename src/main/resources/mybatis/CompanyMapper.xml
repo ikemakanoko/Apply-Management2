@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.AppliedCompanyMapper">
+
+	<select id="selectAll" resultType="AppliedCompanyList">
+		select * from appliedcompany
+	</select>
+
+	<insert id="add" parameterType="AppliedCompanyList">
+		insert into appliedcompany
+		(name,
+		established, president, detail, salaly ,working_time, applied)
+		values
+		(#{name}, #{established}, #{president}, #{detail}, #{salaly},
+		#{working_time}, #{applied})
+	</insert>
+
+	<select id="selectById">
+		SELECT *
+		FROM appliedcompany
+		WHERE id = #{id};
+	</select>
+
+	<delete id="deleteById" parameterType="AppliedCompanyList">
+		DELETE FROM
+		`syuukatu_db`.`appliedcompany`
+		WHERE id = #{id};
+	</delete>
+
+	<update id="update" parameterType="AppliedCompanyList">
+		UPDATE appliedcompany SET
+		name
+		= #{name},
+		established = #{established},
+		president = #{president},
+		detail = #{detail},
+		salaly = #{salaly},
+		working_time = #{working_time},
+		applied = #{applied}
+		WHERE id = #{id};
+	</update>
+
+</mapper>
