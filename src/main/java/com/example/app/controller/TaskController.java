@@ -25,31 +25,29 @@ public class TaskController {
 	//一覧
 	@GetMapping("/toDolist")
 	public String list(Model model) {
+		//一覧取得
 		List<Todo> todoLists = toDoMapper.selectAll();
 		model.addAttribute("todos", todoLists);
 		return "toDolist";
 	}
 
-//	@RequestMapping(value = "/add")
-//	public String add(Todo todo) {
-//		todoMapper.add(todo);
-//		return "redirect:/";
-//	}
-	
-	//ToDoList新規登録
-	@GetMapping("/add")
-	public String addGet(
-			Todo todo,
-			Model model) {
-		//タスクの追加を押したら新規登録できる仕様にしたい
+	public String addGet(Todo todo, Model model) {
+		//ToDoList新規登録　タスクの追加を押したら新規登録できる仕様にしたい
 		//新規登録したオブジェクトを、HTMLの未実行タスクのところに移動させる
 		model.addAttribute("todo", new Todo());
 		toDoMapper.add(todo);
-		return "redirect:/add";
+		return "toDolist";
 	}
-
+	
+	public String showAddDonePage(Model model) {
+		Todo task = new Todo(); // Todoオブジェクトを作成または取得
+		task.setTaskName("Task example"); // taskNameに値を設定
+		model.addAttribute("task", task); // モデルにtaskを追加
+		return "toDolist"; // adddone.htmlを返す
+	}
+	
 	//エラーハンドリング、バリデーション(新規追加)
-	@PostMapping("/add")
+	@PostMapping("/toDolist")
 	public String addPost(
 			@Valid Todo todo,
 			Errors errors,
@@ -62,18 +60,18 @@ public class TaskController {
 		// エラーがある場合、元のフォームに戻す
 		if (errors.hasErrors()) {
 			model.addAttribute("todo", todo); // 入力された値を維持
-			return "add";
+			return "toDolists";
 		}
 		//System.out.println(appliedCompanyList);
 		// バリデーションが通った場合はデータを保存
 		toDoMapper.add(todo);
-		return "redirect:/adddone"; // 完了ページに遷移
+		return "redirect:/toDolists"; // 完了ページに遷移
 	}
 
-	@GetMapping("/adddone")
-	public String addDone() {
-		return "adddone"; // adddone.htmlページに遷移
-	}
+	//	@GetMapping("/adddone")
+	//	public String addDone() {
+	//		return "adddone"; // adddone.htmlページに遷移
+	//	}
 
 	//	// 編集処理
 	//	@GetMapping("/update")

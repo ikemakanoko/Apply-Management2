@@ -87,15 +87,6 @@ public class AppliedCompanyListComtroller {
 		// deleteCompany2.htmlを返す
 		return "insertDone";
 	}
-		
-	// 個別削除処理
-//	@GetMapping("/appliedCompanyEdit/{id}")
-//	public String deleteById(@PathVariable("id") Integer id, Model model) {
-//		model.addAttribute("appliedCompany", new AppliedCompanyList());
-//		appliedCompanyListMapper.deleteById(id); // idで削除
-//		// idをクエリパラメータとしてリダイレクト
-//		return "redirect:/appliedCompanyEdit?id=" + id;
-//	}
 
 	@GetMapping("/deleteCompany2/{id}")
 	public String deleteCompany(@PathVariable("id") Integer id,

@@ -9,8 +9,8 @@
 	<insert id="add" parameterType="Todo">
 		insert into task
 		(task_name, executed, created_at, updated_at)
-		values
-		(#{task_name}, #{executed}, #{created_at}, #{updated_at})
+		 values
+		 (#{taskName}, #{executed}, #{createdAt}, #{updatedAt})
 	</insert>
 
 	<select id="selectById" resultType="Todo">
@@ -28,10 +28,10 @@
 
 	<update id="update" parameterType="Todo">
 		UPDATE task SET
-		task_name = #{task_name},
+		task_name = #{taskName},
 		executed = #{executed},
-		created_at = #{created_at},
-		updated_at = #{updated_at},
+		created_at = #{createdAt},
+		updated_at = #{updatedAt},
 		WHERE id = #{id};
 	</update>
 
