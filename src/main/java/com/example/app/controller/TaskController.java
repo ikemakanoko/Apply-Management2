@@ -26,17 +26,26 @@ public class TaskController {
 	@GetMapping("/toDolist")
 	public String list(Model model) {
 		List<Todo> todoLists = toDoMapper.selectAll();
-		model.addAttribute("Todo", todoLists);
+		model.addAttribute("todos", todoLists);
 		return "toDolist";
 	}
 
+//	@RequestMapping(value = "/add")
+//	public String add(Todo todo) {
+//		todoMapper.add(todo);
+//		return "redirect:/";
+//	}
+	
 	//ToDoList新規登録
 	@GetMapping("/add")
-	public String addGet(Model model) {
+	public String addGet(
+			Todo todo,
+			Model model) {
 		//タスクの追加を押したら新規登録できる仕様にしたい
 		//新規登録したオブジェクトを、HTMLの未実行タスクのところに移動させる
 		model.addAttribute("todo", new Todo());
-		return "add";
+		toDoMapper.add(todo);
+		return "redirect:/add";
 	}
 
 	//エラーハンドリング、バリデーション(新規追加)

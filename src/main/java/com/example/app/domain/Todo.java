@@ -3,7 +3,6 @@ package com.example.app.domain;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -22,6 +21,6 @@ public class Todo {
 	@CreationTimestamp
 	private Timestamp createdAt;
 	
-	@UpdateTimestamp
-	private Timestamp updatedAt;
+//	@UpdateTimestamp
+//	private Timestamp updatedAt;
 }

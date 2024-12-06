@@ -8,15 +8,15 @@
 <body>
 	<h1>TODOリスト</h1>
 	<form action="/add" method="post">
-		<input type="text" name="executed">
+		<input type="text" name="">
 		<button type="submit">タスクの追加</button>
 	</form>
 	
 	<div id="table">
 		<h2>未実行タスク</h2>
-<!--		<ul　th:each="Todo : ${todo}">-->
-<!--			<li th:text="${task.taskName}"></li>-->
-<!--		</ul>-->
+		<ul　th:each="todo : ${todos}">
+			<li th:text="${todo.taskName}"></li>
+		</ul>
 	</div>
 	
 	<div id="table">
