@@ -12,7 +12,7 @@
 		established, president, detail, salaly ,working_time, applied)
 		values
 		(#{name}, #{established}, #{president}, #{detail}, #{salaly},
-		#{working_time}, #{applied})
+		#{workingTime}, #{applied})
 	</insert>
 
 	<select id="selectById">
@@ -35,7 +35,7 @@
 		president = #{president},
 		detail = #{detail},
 		salaly = #{salaly},
-		working_time = #{working_time},
+		working_time = #{workingTime},
 		applied = #{applied}
 		WHERE id = #{id};
 	</update>

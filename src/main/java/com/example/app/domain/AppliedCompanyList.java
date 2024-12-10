@@ -38,7 +38,7 @@ public class AppliedCompanyList {
 	//労働時間
 	@NotNull
 	@DateTimeFormat(pattern = "HH:mm")
-	private LocalTime working_time;
+	private LocalTime workingTime;
 
 	//どこから応募
 	@NotBlank

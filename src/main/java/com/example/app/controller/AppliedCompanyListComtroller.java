@@ -124,7 +124,7 @@ public class AppliedCompanyListComtroller {
 		}
 		System.out.println(appliedCompanyList);
 		// バリデーションが通った場合はデータを保存
-		appliedCompanyListMapper.add(appliedCompanyList);
+		appliedCompanyListMapper.update(appliedCompanyList);
 		return "editedCompany";// 完了ページに遷移
 	}
 }

@@ -7,7 +7,7 @@
 
 <body>
 	<h1>TODOリスト</h1>
-	<form method="post" th:object="${todo}" action="/toDolist">
+	<form action="/toDolist" method="post" th:object="${todo}">
 		<p th:errors="*{taskName}" class="error-message"></p>
 		<input type="text" th:field="*{taskName}">
 		<button type="submit">タスクの追加</button>
@@ -16,8 +16,7 @@
 	<div id="table">
 		<h2>未実行タスク</h2>
 		<!--executed=0(false)ならこちらに表示-->
-		<!--　いずれ削除もしたいので削除の参考用-->
-		<ul　th:each="task : ${todos}">
+		<ul　th:each="todoLists : ${todos}">
 			<li th:text="${todo.taskName}"></li>
 		</ul>
 	</div>
@@ -25,7 +24,7 @@
 	<div id="table">
 		<h2>実行済みタスク</h2>
 		<!--executed=1(true)ならこちらに表示-->
-		<ul th:each="Todo : ${todo}">
+		<ul th:each="todoLists : ${todos}">
 			<li th:text="${todo.taskName}" ></li>
 		</ul>
 	</div>

@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.app.domain.AppliedCompanyList;
 
+import jakarta.validation.Valid;
+
 @Mapper
 public interface AppliedCompanyMapper {
 	//一覧を取得
@@ -21,5 +23,5 @@ public interface AppliedCompanyMapper {
 	void deleteById(int id);
 
 	//更新
-	AppliedCompanyList update(Integer id);
+	void update(@Valid AppliedCompanyList appliedCompanyList);
 }
