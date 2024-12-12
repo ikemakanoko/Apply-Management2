@@ -46,6 +46,7 @@ public class TaskController {
     	model.addAttribute("todos", todos);
     	model.addAttribute("todo", new Todo());
     	model.addAttribute("taskname", todo);
+    	System.out.println(todos);
         return "todoList/todoAdd";
     }
     

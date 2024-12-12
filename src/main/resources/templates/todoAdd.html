@@ -8,23 +8,22 @@
 
 <body>
 	<h1>TODOリスト</h1>
-	<form action="" method="post">
-		<p th:errors="${todo.taskname}" class="error-message"></p>
-		<label for="name">ToDo:</label>
-		<input type="text" id="name" name="name" th:field="${todo.taskname}" />
-		<button type="submit">追加</button>
+	<form action="@{/todoList}" method="post">
+		<!--		<p th:errors="${taskname}" class="error-message"></p>-->
+		<p>ToDo:
+			<input type="text" th:field="${todo.taskname}" />
+			<button type="submit">追加</button>
+		</p>
 	</form>
 	<ul>
-		<th:block th:each="todo : ${todo}">
+		<th:block th:each="todo : ${todos}">
 			<!-- id パラメータを URL に付与 -->
 			<li>
-				<a th:href="@{/todoList(id=${todo.id})}">
-					<span th:text="${todo.taskname}">会社名</span>
-				</a>
+				<span th:text="${todo.taskname}"></span>
 			</li>
-			</th:bl>
 		</th:block>
 	</ul>
+	<a href="/top">トップページ</a>
 </body>
 
 </html>
