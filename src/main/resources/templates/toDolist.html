@@ -16,12 +16,15 @@
 		</p>
 	</form>
 	<ul>
-		<th:block th:each="todo : ${todos}">
+		<th:block th:each="list : ${todoList}">
 			<li>
-				<span th:text="${todo.taskname}"></span>
+			<span th:text="${list.taskname}"></span>
 			</li>
 		</th:block>
 	</ul>
+	<p>
+		<a th:href="@{/deleteTodo/{id}(id=${todoList.id})}">Todoを削除</a>
+	</p>
 	<a href="/top">トップページ</a>
 	
 </body>
