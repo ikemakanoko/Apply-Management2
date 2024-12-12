@@ -8,7 +8,7 @@
 
 <body>
 	<h1>TODOリスト</h1>
-	<form action="@{/todoList}" method="post">
+	<form action="" method="post">
 		<!--		<p th:errors="${taskname}" class="error-message"></p>-->
 		<p>ToDo:
 			<input type="text" th:field="${todo.taskname}" />
@@ -17,13 +17,12 @@
 	</form>
 	<ul>
 		<th:block th:each="todo : ${todos}">
-			<!-- id パラメータを URL に付与 -->
 			<li>
 				<span th:text="${todo.taskname}"></span>
 			</li>
 		</th:block>
 	</ul>
 	<a href="/top">トップページ</a>
+	
 </body>
-
 </html>

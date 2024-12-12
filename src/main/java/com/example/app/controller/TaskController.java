@@ -51,7 +51,7 @@ public class TaskController {
     }
     
 	//エラーハンドリング、バリデーション(新規追加)
-	@PostMapping("/todoList/todoAdd")
+	@PostMapping("/todoList")
 	public String addPost(
 			@Valid Todo todo,
 			Errors errors,
