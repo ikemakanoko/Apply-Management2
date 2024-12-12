@@ -3,32 +3,32 @@
 <mapper namespace="com.example.app.mapper.ToDoMapper">
 
 	<select id="selectAll" resultType="Todo">
-		select * from task
+		select * from todo
 	</select>
 
 	<insert id="add" parameterType="Todo">
-		insert into task
-		(task_name, executed, created_at, updated_at)
+		insert into todo
+		(taskname, executed, created_at, updated_at)
 		 values
-		 (#{taskName}, #{executed}, #{createdAt}, #{updatedAt})
+		 (#{taskname}, #{executed}, #{createdAt}, #{updatedAt})
 	</insert>
 
 	<select id="selectById" resultType="Todo">
 		SELECT *
-		FROM task
+		FROM todo
 		WHERE id =
 		#{id};
 	</select>
 
 	<delete id="deleteById" parameterType="Integer">
 		DELETE FROM
-		`task_name`.`executed`.`created_at`.`updated_at`
+		`taskname`.`executed`.`created_at`.`updated_at`
 		WHERE id = #{id};
 	</delete>
 
 	<update id="update" parameterType="Todo">
-		UPDATE task SET
-		task_name = #{taskName},
+		UPDATE todo SET
+		taskname = #{taskname},
 		executed = #{executed},
 		created_at = #{createdAt},
 		updated_at = #{updatedAt},

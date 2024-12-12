@@ -10,10 +10,11 @@ import lombok.Data;
 
 @Data
 public class Todo {
+	
 	private int id;
 	
 	@NotBlank
-	private String taskName;
+	private String taskname;
 	
 	//0 false
 	//1 true
