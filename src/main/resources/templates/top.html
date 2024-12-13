@@ -3,13 +3,27 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>トップページ</title>
+	<link rel="stylesheet" href="/css/style2.css">
 </head>
 
 <body>
-	<h1>応募企業管理トップページ</h1>
-	<p><a href="/appliedCompanyList">応募済み企業一覧</a></p>
-	<p><a href="/appliedCompanyInsert">応募済み企業追加</a></p>
-	<p><a href="/todoList">Todoリスト</a></p>
+	<header>
+		<h1>応募企業管理トップページ</h1>
+	</header>
+	<main class="top-page">
+		<nav class="navigation">
+			<ul>
+				<li><a href="/appliedCompanyList" class="btn btn-primary">応募済み企業一覧</a></li>
+				<li><a href="/appliedCompanyInsert" class="btn btn-secondary">応募済み企業追加</a></li>
+				<li><a href="/todoList" class="btn btn-info">Todoリスト</a></li>
+			</ul>
+		</nav>
+	</main>
+	<footer>
+		<p>&copy; 2024 応募企業管理システム</p>
+	</footer>
 </body>
+
 </html>

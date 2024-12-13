@@ -3,29 +3,33 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Todoリスト</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TODOリスト</title>
+	<link rel="stylesheet" href="/css/tuika2.css">
 </head>
 
 <body>
 	<h1>TODOリスト</h1>
 	<form action="" method="post">
-		<!--		<p th:errors="${taskname}" class="error-message"></p>-->
+		<!-- <p th:errors="${taskname}" class="error-message"></p> -->
 		<p>ToDo:
 			<input type="text" th:field="${todo.taskname}" />
 			<button type="submit">追加</button>
 		</p>
 	</form>
+
 	<ul>
 		<th:block th:each="list : ${todoList}">
 			<li>
-			<span th:text="${list.taskname}"></span>
+				<span th:text="${list.taskname}"></span>
+				<a th:href="@{/deleteTodo/{id}(id=${list.id})}" style="float: right; color: red;">削除</a>
 			</li>
 		</th:block>
 	</ul>
-	<p>
-		<a th:href="@{/deleteTodo/{id}(id=${todoList.id})}">Todoを削除</a>
+
+	<p style="text-align: center;">
+		<a href="/top">トップページ</a>
 	</p>
-	<a href="/top">トップページ</a>
-	
 </body>
+
 </html>

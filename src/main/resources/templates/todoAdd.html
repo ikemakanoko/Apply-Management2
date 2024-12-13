@@ -3,30 +3,108 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Todoリスト</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TODOリスト</title>
+	<link rel="stylesheet" href="css/tuika.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f8f9fa;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			background-color: #007bff;
+			color: white;
+			padding: 20px;
+			margin: 0;
+		}
+
+		form {
+			max-width: 600px;
+			margin: 20px auto;
+			padding: 20px;
+			background-color: white;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			border-radius: 8px;
+		}
+
+		p {
+			margin: 10px 0;
+			font-size: 16px;
+		}
+
+		input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			margin-top: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+		}
+
+		button {
+			background-color: #007bff;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+			margin-left: 10px;
+		}
+
+		button:hover {
+			background-color: #0056b3;
+		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+
+		li {
+			padding: 10px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+			border-radius: 5px;
+		}
+
+		a {
+			color: #007bff;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	</style>
 </head>
 
 <body>
 	<h1>TODOリスト</h1>
 	<form action="" method="post">
-		<!--		<p th:errors="${taskname}" class="error-message"></p>-->
+		<!-- <p th:errors="${taskname}" class="error-message"></p> -->
 		<p>ToDo:
 			<input type="text" th:field="${todo.taskname}" />
 			<button type="submit">追加</button>
 		</p>
 	</form>
+
 	<ul>
 		<th:block th:each="list : ${todoList}">
 			<li>
 				<span th:text="${list.taskname}"></span>
+				<a th:href="@{/deleteTodo/{id}(id=${list.id})}" style="float: right; color: red;">削除</a>
 			</li>
 		</th:block>
 	</ul>
-	<p>
-		<a th:href="@{/deleteTodo/{id}(id=${todoList.id})}">Todoを削除</a>
-	</p>
-	<a href="/top">トップページ</a>
 
+	<p style="text-align: center;">
+		<a href="/top">トップページ</a>
+	</p>
 </body>
 
 </html>

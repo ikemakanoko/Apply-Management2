@@ -3,66 +3,79 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>応募企業情報編集</title>
+	<!-- Font AwesomeのCDN -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<script src="/js/message.js"></script>
+	<link rel="stylesheet" href="/css/style1.css">
 </head>
-<!-- Font AwesomeのCDNを読み込む -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<script src="/js/message.js"></script>
-<link rel="stylesheet" href="/css/style.css">
 
 <body>
-	<h1>応募企業情報編集</h1>
-	<form th:action="@{/appliedCompanyEdit/{id}(id=${appliedCompanyList.id})}" method="post" th:object="${appliedCompanyList}">
-		<p th:errors="*{name}" class="error-message"></p>
-		<p>企業名：
-			<input type="text" th:field="*{name}">
-		</p>
+	<header>
+		<h1>応募企業情報編集</h1>
+	</header>
+	<main>
+		<form th:action="@{/appliedCompanyEdit/{id}(id=${appliedCompanyList.id})}" method="post"
+			th:object="${appliedCompanyList}" class="edit-form">
+			<div class="form-group">
+				<label for="name">企業名：</label>
+				<input type="text" id="name" th:field="*{name}">
+				<p th:errors="*{name}" class="error-message"></p>
+			</div>
 
-		<p th:errors="*{established}" class="error-message"></p>
-		<p>創立年：
-			<input type="date" th:field="*{established}">
-		</p>
+			<div class="form-group">
+				<label for="established">創立年：</label>
+				<input type="date" id="established" th:field="*{established}">
+				<p th:errors="*{established}" class="error-message"></p>
+			</div>
 
-		<p th:errors="*{president}" class="error-message"></p>
-		<p>社長：
-			<input type="text" th:field="*{president}">
-		</p>
+			<div class="form-group">
+				<label for="president">社長：</label>
+				<input type="text" id="president" th:field="*{president}">
+				<p th:errors="*{president}" class="error-message"></p>
+			</div>
 
-		<p th:errors="*{detail}" class="error-message"></p>
-		<p>詳細説明メモ：
-			<input type="text" th:field="*{detail}">
-		</p>
+			<div class="form-group">
+				<label for="detail">詳細説明メモ：</label>
+				<input type="text" id="detail" th:field="*{detail}">
+				<p th:errors="*{detail}" class="error-message"></p>
+			</div>
 
-		<p th:errors="*{salaly}" class="error-message"></p>
-		<p>給料：
-			<input type="number" th:field="*{salaly}">
-		</p>
+			<div class="form-group">
+				<label for="salaly">給料：</label>
+				<input type="number" id="salaly" th:field="*{salaly}">
+				<p th:errors="*{salaly}" class="error-message"></p>
+			</div>
 
-		<p th:errors="*{workingTime}" class="error-message"></p>
-		<p>労働時間：
-			<input type="time" th:field="*{workingTime}">時間
-		</p>
+			<div class="form-group">
+				<label for="workingTime">労働時間：</label>
+				<input type="time" id="workingTime" th:field="*{workingTime}">
+				<p th:errors="*{workingTime}" class="error-message"></p>
+			</div>
 
-		<p th:errors="*{applied}" class="error-message"></p>
-		<p>どこから応募：
-			<input type="text" th:field="*{applied}">
-		</p>
-		<a href="/editedCompany">
-			<input type="submit" name="btn" value="変更"></a>
+			<div class="form-group">
+				<label for="applied">どこから応募：</label>
+				<input type="text" id="applied" th:field="*{applied}">
+				<p th:errors="*{applied}" class="error-message"></p>
+			</div>
 
-		<p><a href="/top">戻る</a>※変更内容は失われます</p>
+			<div class="form-actions">
+				<input type="submit" class="btn btn-primary" value="変更">
+				<a href="/appliedCompanyList" class="btn btn-secondary">戻る</a>
+			</div>
 
-		<p>
-			<a th:href="@{/deleteTodo/{id}(id=${todoList.id})}">応募企業情報を全て削除</a>
-		</p>
-	</form>
-
-		<p><a href="/top">トップページ</a></p>
-
-		<noscript>
-			<h1>JavaScriptを有効にしてください。</h1>
-		</noscript>
-
+			<div class="delete-action">
+				<a th:href="@{/deleteCompany2/{id}(id=${appliedCompanyList.id})}" class="btn btn-danger">応募企業情報を全て削除</a>
+			</div>
+		</form>
+		<footer>
+			<p><a href="/top">トップページ</a></p>
+		</footer>
+	</main>
+	<noscript>
+		<h1>JavaScriptを有効にしてください。</h1>
+	</noscript>
 </body>
 
 </html>

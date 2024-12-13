@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="css/style.css">
 
 <head>
 	<meta charset="UTF-8">
@@ -15,15 +16,26 @@
 			<button type="submit">追加</button>
 		</p>
 	</form>
+	<h2>未実行タスク</h2>
 	<ul>
 		<th:block th:each="list : ${todoList}">
 			<li>
-				<span th:text="${list.taskname}"></span>
+				<span th:text="${list.taskname}"></span><span>削除</span>
 			</li>
 		</th:block>
 	</ul>
+	<br><br><br>
+	<h2>実行済タスク</h2>
+	<ul>
+		<th:block th:each="list : ${todoList}">
+			<li>
+				<span th:text="${list.taskname}"></span><span>削除</span>
+			</li>
+		</th:block>
+	</ul>
+	<!--		javascかcssで消せるならそれぞれの実行済み、未実行を消せるロジックを作る-->
 	<p>
-		<a th:href="@{/deleteTodo/{id}(id=${todoList.id})}">Todoを削除</a>
+		<a th:href="deleteTodo">Todoを削除</a>
 	</p>
 	<a href="/top">トップページ</a>
 

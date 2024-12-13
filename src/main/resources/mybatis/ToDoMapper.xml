@@ -21,9 +21,7 @@
 	</select>
 
 	<delete id="deleteById" parameterType="Integer">
-		DELETE FROM
-		`taskname`.`executed`.`created_at`.`updated_at`
-		WHERE id = #{id};
+		DELETE FROM `syuukatu_db`.`todo` WHERE id = #{id};
 	</delete>
 
 	<update id="update" parameterType="Todo">

@@ -3,36 +3,49 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>応募企業詳細</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<!-- Font AwesomeのCDNを読み込む -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<!-- Font AwesomeのCDNを読み込む -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <body>
-	<h1>応募企業詳細</h1>
-		
-	<p th:text="'企業名：' + *{appliedCompany.name}"></p>
+	<header>
+		<h1>応募企業詳細</h1>
+	</header>
+	<main class="company-detail">
+		<div class="company-info">
+			<p><strong>企業名:</strong>
+			<span th:text="*{appliedCompany.name}">株式会社サンプル</span></p>
+			
+			<p><strong>創立年:</strong>
+			<span th:text="*{appliedCompany.established}">2000-01-01</span></p>
+			
+			<p><strong>社長:</strong>
+			<span th:text="*{appliedCompany.president}">山田太郎</span></p>
+			
+			<p><strong>詳細説明メモ:</strong>
+			<span th:text="*{appliedCompany.detail}">詳細な説明がここに入ります。</span></p>
+			
+			<p><strong>給料:</strong>
+			<span th:text="*{appliedCompany.salaly}">500万円</span></p>
+			
+			<p><strong>労働時間:</strong>
+			<span th:text="*{appliedCompany.workingTime}">09:00 ~ 18:00</span></p>
+			
+			<p><strong>どこから応募:</strong>
+			<span th:text="*{appliedCompany.applied}">マイナビ</span></p>
+		</div>
 
-	<p th:text="'創立年：' + *{appliedCompany.established}"></p>
-	
-	<p th:text="'社長：' + *{appliedCompany.president}"></p>
-	
-	<p th:text="'詳細説明メモ：' + *{appliedCompany.detail}"></p>
-
-	<p th:text="'給料：' + *{appliedCompany.salaly}"></p>
-	
-	<p th:text="'労働時間：' + *{appliedCompany.workingTime}"></p>
-	
-	<p th:text="'どこから応募：' + *{appliedCompany.applied}"></p>
-	
-	</th:block>
-	
-	<form action="">
-		<a th:href="@{/appliedCompanyEdit/{id}(id=${appliedCompany.id})}">企業情報編集</a>
-	</form>
-	<a href="/top">トップページ</a>
+		<div class="actions">
+			<a class="btn btn-primary" th:href="@{/appliedCompanyEdit/{id}(id=${appliedCompany.id})}">企業情報編集</a>
+			<a class="btn btn-danger" th:href="@{/deleteCompany2/{id}(id=${appliedCompany.id})}">
+				<i class="fas fa-trash"></i> 削除
+			</a>
+			<a class="btn btn-secondary" href="/top">トップページ</a>
+		</div>
+	</main>
 </body>
-
-<!-- ゴミ箱<i class="fas fa-trash" aria-hidden="true"></i></a>-->
 
 </html>
