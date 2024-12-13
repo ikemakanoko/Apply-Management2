@@ -79,7 +79,7 @@ public class TaskController {
 		// idを使って削除処理を実行
 		System.out.println("削除するタスクのID: " + id);
 		// 必要な削除処理をここで行う
-		return "deleteTodo"; // 削除後のリダイレクト先
+		return "todoList"; // 削除後のリダイレクト先
 	}
 	
 }

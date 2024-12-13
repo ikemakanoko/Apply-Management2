@@ -8,7 +8,7 @@ body {
 
 h1 {
     text-align: center;
-    background-color: #007bff;
+    background-color: #006400;
     color: white;
     padding: 20px;
     margin: 0;
@@ -29,7 +29,7 @@ p {
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 72%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
@@ -57,10 +57,11 @@ ul {
 }
 
 li {
-    padding: 10px;
+	margin: 20px auto;
+	width: 72%;
+    padding: 15px;
     background-color: #fff;
     border: 1px solid #ccc;
-    margin-bottom: 10px;
     border-radius: 5px;
 }
 

@@ -29,7 +29,7 @@
 			<span th:text="*{appliedCompany.detail}">詳細な説明がここに入ります。</span></p>
 			
 			<p><strong>給料:</strong>
-			<span th:text="*{appliedCompany.salaly}">500万円</span></p>
+			<span th:text="'月給 ' + *{appliedCompany.salaly} + '円'">500万円</span></p>
 			
 			<p><strong>労働時間:</strong>
 			<span th:text="*{appliedCompany.workingTime}">09:00 ~ 18:00</span></p>
@@ -44,6 +44,7 @@
 				<i class="fas fa-trash"></i> 削除
 			</a>
 			<a class="btn btn-secondary" href="/top">トップページ</a>
+			<a class="btn btn-secondary" href="/appliedCompanyList">応募企業一覧に戻る</a>
 		</div>
 	</main>
 </body>
