@@ -23,7 +23,6 @@
 				<a th:href="@{/appliedCompanyDetail(id=${appliedCompany.id})}">
 					<h2 th:text="${appliedCompany.name}">会社名</h2>
 				</a>
-				<form action="/todoList" method="post">
 					<div class="process">
 						<label for="status">応募ステータス</label>
 						<select name="status" id="status">
@@ -43,12 +42,13 @@
 							<option value="入社待ち">入社待ち</option>
 						</select>
 					</div>
+					<a href="/todoList">
 					<div class="todo">
 						<label for="todo">Todo:</label>
 						<input type="text"　id="todo" placeholder="タスクを入力してください" />
 						<button type="submit">Todo追加</button>
 					</div>
-				</form>
+					</a>
 			</div>
 		</th:block>
 	</main>
