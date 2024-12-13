@@ -1,6 +1,6 @@
 /* 共通スタイル */
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'Meiryo', sans-serif;
 	margin: 0;
 	padding: 0;
 	background-color: #f8f9fa;
@@ -9,7 +9,6 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 }
-
 /* ヘッダー */
 header {
 	background-color: #006400;

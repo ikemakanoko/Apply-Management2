@@ -9,11 +9,13 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<!-- 外部CSS -->
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="">
 </head>
 
 <body>
 	<header>
 		<h1>応募企業一覧</h1>
+	<p>企業名をクリックすると企業情報の閲覧や編集ができます</p>
 	</header>
 	<main>
 		<th:block th:each="appliedCompany : ${appliedCompanyLists}">
@@ -21,7 +23,7 @@
 				<a th:href="@{/appliedCompanyDetail(id=${appliedCompany.id})}">
 					<h2 th:text="${appliedCompany.name}">会社名</h2>
 				</a>
-				<form action="/updateStatus" method="post">
+				<form action="/todoList" method="post">
 					<div class="process">
 						<label for="status">応募ステータス</label>
 						<select name="status" id="status">
@@ -33,6 +35,9 @@
 							<option value="一次面接日程調整中">一次面接日程調整中</option>
 							<option value="二次面接日程調整中">二次面接日程調整中</option>
 							<option value="最終面接日程調整中">最終面接日程調整中</option>
+							<option value="一次面接日程調整完了">一次面接日程調整完了</option>
+							<option value="二次面接日程調整完了">二次面接日程調整完了</option>
+							<option value="最終面接日程調整完了">最終面接日程調整完了</option>
 							<option value="辞退">辞退</option>
 							<option value="内定">内定</option>
 							<option value="入社待ち">入社待ち</option>
@@ -40,8 +45,8 @@
 					</div>
 					<div class="todo">
 						<label for="todo">Todo:</label>
-						<input type="text" id="todo" placeholder="タスクを入力してください" />
-						<button type="submit">追加</button>
+						<input type="text"　id="todo" placeholder="タスクを入力してください" />
+						<button type="submit">Todo追加</button>
 					</div>
 				</form>
 			</div>

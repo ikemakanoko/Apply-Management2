@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,17 +35,6 @@ public class TaskController {
         //一覧表示
         return "todoList";
     }
-    
-    //新規登録
-    @GetMapping("/todoAdd")
-    public String addTodo(@ModelAttribute Todo todo, Model model) {
-    	// 新しいToDoをリストに追加
-    	// リダイレクトしてリストを更新
-    	model.addAttribute("todo", new Todo());
-    	System.out.println(todo);
-    	return "todoAdd";
-    }
-
     
 	//エラーハンドリング、バリデーション(新規追加)
 	@PostMapping("/todoList")
@@ -79,7 +67,6 @@ public class TaskController {
 		// idを使って削除処理を実行
 		System.out.println("削除するタスクのID: " + id);
 		// 必要な削除処理をここで行う
-		return "todoList"; // 削除後のリダイレクト先
+		return "redirect:/todoList"; // 削除後のリダイレクト先
 	}
-	
 }
