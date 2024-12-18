@@ -10,13 +10,22 @@
 <body>
 	<h1>応募企業新規追加</h1>
 	<form action="" method="post" th:object="${appliedCompanyList}">
+
+		<p th:errors="*{status}" class="error-message"></p>
+		<label for="status">応募ステータス：</label>
+		<select id="status" name="status">
+		    <th:block th:each="appliedCompanyList : ${appliedCompanyLists}" 
+		     th:value="${appliedCompany.statusid}" th:text="${appliedCompany.statusid}">
+			応募ステータス:[[${appliedCompany.status}]]
+			</th:block>
+		</select>
+		<button type="submit">送信</button>
 		
-		<p th:errors="*{statusid}" class="error-message"></p>
 		<p>
-			<label for="statusid">応募ステータス：</label>
-			<input type="number" id="statusid" th:field="*{statusid}">
+			<label for="status">応募ステータス：</label>
+			<input type="text" id="status" th:field="*{status}">
 		</p>
-		
+
 		<p th:errors="*{name}" class="error-message"></p>
 		<p>
 			<label for="name">企業名：</label>
@@ -52,7 +61,7 @@
 			<label for="workingTime">労働時間(開始)：</label>
 			<input type="time" id="workingTime" th:field="*{workingTime}">
 		</p>
-		
+
 		<p th:errors="*{workingTime2}" class="error-message"></p>
 		<p>
 			<label for="workingTime2">労働時間(終了)：</label>
@@ -64,7 +73,7 @@
 			<label for="applied">どこから応募：</label>
 			<input type="text" id="applied" th:field="*{applied}">
 		</p>
-		
+
 		<p th:errors="*{url}" class="error-message"></p>
 		<p>
 			<label for="url">会社ホームページURL：</label>

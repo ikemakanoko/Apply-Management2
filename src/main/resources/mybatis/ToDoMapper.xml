@@ -3,7 +3,7 @@
 <mapper namespace="com.example.app.mapper.ToDoMapper">
 
 	<select id="selectAll" resultType="Todo">
-		select * from todo
+		SELECT * FROM appliedcompany join status on appliedcompany.statusid = status.id
 	</select>
 
 	<insert id="add" parameterType="Todo">
