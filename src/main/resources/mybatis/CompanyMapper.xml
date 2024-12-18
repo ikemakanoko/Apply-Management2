@@ -3,16 +3,15 @@
 <mapper namespace="com.example.app.mapper.AppliedCompanyMapper">
 
 	<select id="selectAll" resultType="AppliedCompanyList">
-		select * from appliedcompany
+		SELECT * FROM appliedcompany join status on appliedcompany.statusid = status.id
 	</select>
 
 	<insert id="add" parameterType="AppliedCompanyList">
 		insert into appliedcompany
-		(name,
-		established, president, detail, salaly ,working_time, applied)
+		(name, statusid, established, president, detail, salaly, working_time, working_time2, url, applied)
 		values
-		(#{name}, #{established}, #{president}, #{detail}, #{salaly},
-		#{workingTime}, #{applied})
+		(#{name}, #{statusid}, #{established}, #{president}, #{detail}, #{salaly},
+		#{workingTime}, #{workingTime2}, #{url}, #{applied})
 	</insert>
 
 	<select id="selectById">
@@ -31,12 +30,15 @@
 		UPDATE appliedcompany SET
 		name
 		= #{name},
+		statusid = #{statusid},
 		established = #{established},
 		president = #{president},
 		detail = #{detail},
 		salaly = #{salaly},
 		working_time = #{workingTime},
-		applied = #{applied}
+		working_time2 = #{workingTime2},
+		applied = #{applied},
+		url = #{url}
 		WHERE id = #{id};
 	</update>
 

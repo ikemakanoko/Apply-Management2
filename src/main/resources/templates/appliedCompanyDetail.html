@@ -16,6 +16,10 @@
 	</header>
 	<main class="company-detail">
 		<div class="company-info">
+			<p><strong>応募ステータス:</strong>
+			<span th:text="*{appliedCompany.status}"></span></p>
+<!--			appliedCompany.statusidの番号に対応する-->
+			
 			<p><strong>企業名:</strong>
 			<span th:text="*{appliedCompany.name}">株式会社サンプル</span></p>
 			
@@ -25,17 +29,20 @@
 			<p><strong>社長:</strong>
 			<span th:text="*{appliedCompany.president}">山田太郎</span></p>
 			
-			<p><strong>詳細説明メモ:</strong>
-			<span th:text="*{appliedCompany.detail}">詳細な説明がここに入ります。</span></p>
-			
 			<p><strong>給料:</strong>
 			<span th:text="'月給 ' + *{appliedCompany.salaly} + '円'">500万円</span></p>
 			
 			<p><strong>労働時間:</strong>
-			<span th:text="*{appliedCompany.workingTime}">09:00 ~ 18:00</span></p>
+			<span th:text="*{appliedCompany.workingTime} + '～' + *{appliedCompany.workingTime2}">09:00 ~ 18:00</span></p>
 			
 			<p><strong>どこから応募:</strong>
 			<span th:text="*{appliedCompany.applied}">マイナビ</span></p>
+			
+			<p><strong>会社ホームページURL:</strong>
+			<span th:text="*{appliedCompany.url}">マイナビ</span></p>
+			
+			<p><strong>詳細説明メモ:</strong>
+			<span th:text="*{appliedCompany.detail}">詳細な説明がここに入ります。</span></p>
 		</div>
 
 		<div class="actions">

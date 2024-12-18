@@ -15,6 +15,11 @@ public class AppliedCompanyList {
 	//番号をオートインクリメントで
 	private Integer id;
 	
+	@NotNull
+	private Integer statusid;
+	
+	private String  status;
+	
 	//会社名
 	@NotBlank
 	private String name;
@@ -40,7 +45,16 @@ public class AppliedCompanyList {
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime workingTime;
 
+	@NotNull
+	@DateTimeFormat(pattern = "HH:mm")
+	private LocalTime workingTime2;
+	
 	//どこから応募
 	@NotBlank
 	private String applied;
+	
+	//nullでもOK
+	private String url;
+	
+	
 }

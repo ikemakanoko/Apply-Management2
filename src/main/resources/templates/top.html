@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<!--	<th:block th:if="${session.username}">-->
 	<header>
 		<h1>応募企業管理トップページ</h1>
 	</header>
@@ -24,6 +25,22 @@
 	<footer>
 		<p>&copy; 2024 応募企業管理システム　池間佳乃子</p>
 	</footer>
+<!--	</th:block>-->
+	
+<!--	<th:block th:unless="${session.username}">-->
+<!-- 		<form action="/top" method="post" th:object="${user}">-->
+<!-- 			<span th:errors="*{username}" class="error"></span>-->
+<!-- 			<p class="mt-2">-->
+<!--				 ログイン ID：-->
+<!--				<input type="text" th:field="*{username}">-->
+<!--			</p>-->
+<!-- 			<p>-->
+<!--				 パスワード：-->
+<!--				 <input type="password" th:field="*{password}">-->
+<!--			</p>-->
+<!-- 			<input class="btn btn-primary" type="submit" value="ログイン">-->
+<!-- 		</form>-->
+<!--	</th:block>-->
+	
 </body>
-
 </html>

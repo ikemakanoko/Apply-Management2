@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -18,7 +19,8 @@ public class Todo {
 	
 	//0 false
 	//1 true
-	private Integer executed;
+	@Column(name = "executed")
+    private Integer executed; // true/false
 	
 	@CreationTimestamp
 	private Timestamp createdAt;

@@ -15,7 +15,7 @@
 <body>
 	<header>
 		<h1>応募企業一覧</h1>
-	<p>企業名をクリックすると企業情報の閲覧や編集ができます</p>
+		<p>企業名をクリックすると企業情報の閲覧や編集ができます</p>
 	</header>
 	<main>
 		<th:block th:each="appliedCompany : ${appliedCompanyLists}">
@@ -23,34 +23,22 @@
 				<a th:href="@{/appliedCompanyDetail(id=${appliedCompany.id})}">
 					<h2 th:text="${appliedCompany.name}">会社名</h2>
 				</a>
-					<div class="process">
-						<label for="status">応募ステータス</label>
-						<select name="status" id="status">
-							<option value="1">選考準備中</option>
-							<option value="書類選考中">書類選考中</option>
-							<option value="書類選考通過">書類選考通過</option>
-							<option value="一次選考通過">一次選考通過</option>
-							<option value="二次選考通過">二次選考通過</option>
-							<option value="一次面接日程調整中">一次面接日程調整中</option>
-							<option value="二次面接日程調整中">二次面接日程調整中</option>
-							<option value="最終面接日程調整中">最終面接日程調整中</option>
-							<option value="一次面接日程調整完了">一次面接日程調整完了</option>
-							<option value="二次面接日程調整完了">二次面接日程調整完了</option>
-							<option value="最終面接日程調整完了">最終面接日程調整完了</option>
-							<option value="辞退">辞退</option>
-							<option value="内定">内定</option>
-							<option value="入社待ち">入社待ち</option>
-						</select>
-					</div>
-					<a href="/todoList">
+		
+<!--			<div class="company-item">-->
+					<h2>応募ステータス:[[${appliedCompany.status}]]</h2>
+					
+				<!-- 応募ステータスの表示 -->
+				
+				
+				<a href="/todoList">
 					<div class="todo">
 						<label for="todo">Todo:</label>
-						<input type="text"　id="todo" placeholder="タスクを入力してください" />
+						<input type="text" id="todo" placeholder="タスクを入力してください" />
 						<button type="submit">Todo追加</button>
 					</div>
-					</a>
+				</a>
 			</div>
-		</th:block>
+		
 	</main>
 	<footer>
 		<a href="/top">トップページ</a>

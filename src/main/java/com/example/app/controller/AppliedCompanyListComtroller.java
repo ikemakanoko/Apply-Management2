@@ -18,11 +18,12 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping
 @RequiredArgsConstructor
 public class AppliedCompanyListComtroller {
 
 	private final AppliedCompanyMapper appliedCompanyListMapper;
+//	private final StatusMapper statusListMapper;
 	//appliedCompanyListMapperはAppliedCompanyMapperを利用するためのフィールド
 	//AppliedCompanyMapperは機能の集合
 
@@ -33,8 +34,12 @@ public class AppliedCompanyListComtroller {
 	public String list(Model model) {
 		// "top" は src/main/resources/templates/top.html に対応
 		List<AppliedCompanyList> appliedCompanies = appliedCompanyListMapper.selectAll();
+//		List<StatusList> statuses = statusListMapper.selectAll();
 		model.addAttribute("appliedCompanyLists", appliedCompanies);
-		//System.out.println(appliedCompanies);
+//		model.addAttribute("statusLists", statuses);
+		
+		//appliedcompanyテーブルとstatusテーブルの一覧の取得
+//		System.out.println(statuses);
 		return "appliedCompanyList";
 	}
 
@@ -43,6 +48,8 @@ public class AppliedCompanyListComtroller {
 	public String detail(@RequestParam("id") Integer id,
 			Model model) {
 		AppliedCompanyList company = appliedCompanyListMapper.selectById(id);
+		//多分ここで結合したstatusをid,statusidと紐づけて、
+		//statusidの番号に対応することば（選考辞退など）を表示させるロジックが必要
 		model.addAttribute("appliedCompany", company);
 		return "appliedCompanyDetail";
 	}
@@ -54,8 +61,6 @@ public class AppliedCompanyListComtroller {
 		//AppliedCompanyListとappliedCompanyListは対応している。
 		//appliedCompanyListをHTMLで使う
 		//("b", new a());の場合、bはaのキャメルケースでないとうまく動かない
-
-		//System.out.println(appliedCompanies);
 		return "appliedCompanyInsert";
 	}
 
@@ -73,6 +78,7 @@ public class AppliedCompanyListComtroller {
 		// エラーがある場合、元のフォームに戻す
 		if (errors.hasErrors()) {
 			model.addAttribute("appliedCompanyLists", appliedCompanyList); // 入力された値を維持
+			System.out.println(errors);
 			return "/appliedCompanyInsert";
 		}
 		//System.out.println(appliedCompanyList);
