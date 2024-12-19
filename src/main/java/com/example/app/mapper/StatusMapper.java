@@ -24,5 +24,5 @@ public interface StatusMapper {
 	void deleteById(int id);
 
 	//更新
-	void update(@Valid StatusList statusList);
+	void updateStatus(@Valid StatusList statusList);
 }

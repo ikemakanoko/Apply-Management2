@@ -9,7 +9,6 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<!-- 外部CSS -->
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="">
 </head>
 
 <body>
@@ -23,11 +22,32 @@
 				<a th:href="@{/appliedCompanyDetail(id=${appliedCompany.id})}">
 					<h2 th:text="${appliedCompany.name}">会社名</h2>
 				</a>
-		
-<!--			<div class="company-item">-->
+
+				<!--			<div class="company-item">-->
 				<!-- 応募ステータスの表示 -->
-					<h2>応募ステータス:[[${appliedCompany.status}]]</h2>
-				
+				<h2>応募ステータス: <a href="#" th:attr="data-modal-id=${appliedCompany.id}" class="open-modal"
+						data-company-name="${appliedCompany.name}" data-company-id="${appliedCompany.id}" th:text="${appliedCompany.status}">ステータス</a></h2>
+
+
+				<!--モーダルゾーン-->
+				<div th:attr="id='modal-' + ${appliedCompany.id}" class="modal">
+					<div class="modal-content">
+						<span class="close-button" th:attr="data-modal-id=${appliedCompany.id}">&times;</span>
+						<h2>応募ステータスを選択してください</h2>
+						<form th:action="@{/updateStatus(id=${appliedCompany.id})}" method="post">
+							<input type="hidden" name="id" th:value="${appliedCompany.id}" />
+							<div th:each="status : ${statuss}">
+								<label>
+									<input type="checkbox" name="status" th:value="${status.id}"
+										th:checked="${status.id == appliedCompany.statusid}" />
+									<span th:text="${status.status}">ステータス</span>
+								</label>
+							</div>
+							<button type="submit">選択を保存</button>
+						</form>
+					</div>
+				</div>
+
 				<a href="/todoList">
 					<div class="todo">
 						<label for="todo">Todo:</label>
@@ -36,11 +56,85 @@
 					</div>
 				</a>
 			</div>
-		
+
 	</main>
+
 	<footer>
 		<a href="/top">トップページ</a>
 	</footer>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// モーダルを開くリンクにイベントリスナーを追加
+			const openModalLinks = document.querySelectorAll(".open-modal");
+			const modal = document.getElementById("modal");
+			const companyNameElement = document.getElementById("companyName");
+			const companyIdInput = document.getElementById("companyId");
+
+			openModalLinks.forEach(link => {
+				link.addEventListener("click", function (event) {
+					event.preventDefault(); // デフォルトのリンク動作を無効化
+
+					// データ属性から値を取得
+					const companyName = this.getAttribute("data-company-name");
+					const companyId = this.getAttribute("data-company-id");
+
+					// モーダルに値をセット
+					companyNameElement.textContent = companyName;
+					companyIdInput.value = companyId;
+
+					// モーダルを表示
+					modal.style.display = "block";
+				});
+			});
+
+			// モーダルを閉じる処理
+			const closeModal = document.getElementById("closeModal");
+			closeModal.addEventListener("click", function () {
+				modal.style.display = "none";
+			});
+		});
+
+		document.addEventListener("DOMContentLoaded", () => {
+			const openButtons = document.querySelectorAll(".open-modal");
+			const closeButtons = document.querySelectorAll(".close-button");
+			const modalForms = document.querySelectorAll(".modal form");
+
+			modalForms.forEach((form) => {
+				const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+				checkboxes.forEach((checkbox) => {
+					checkbox.addEventListener("change", () => {
+						checkboxes.forEach((box) => {
+							if (box !== checkbox) {
+								box.checked = false; // 他のチェックボックスを解除
+							}
+						});
+					});
+				});
+			});
+			openButtons.forEach((button) => {
+				button.addEventListener("click", (event) => {
+					event.preventDefault();
+					const modalId = event.target.getAttribute("data-modal-id");
+					document.getElementById(`modal-${modalId}`).style.display = "block";
+				});
+			});
+
+			closeButtons.forEach((button) => {
+				button.addEventListener("click", (event) => {
+					const modalId = event.target.getAttribute("data-modal-id");
+					document.getElementById(`modal-${modalId}`).style.display = "none";
+				});
+			});
+
+			window.addEventListener("click", (event) => {
+				if (event.target.classList.contains("modal")) {
+					event.target.style.display = "none";
+				}
+			});
+		});
+	</script>
+
 </body>
 
 </html>

@@ -15,7 +15,6 @@ public class AppliedCompanyList {
 	//番号をオートインクリメントで
 	private Integer id;
 	
-	@NotNull
 	private Integer statusid;
 	
 	private String  status;

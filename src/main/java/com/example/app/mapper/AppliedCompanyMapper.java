@@ -24,4 +24,6 @@ public interface AppliedCompanyMapper {
 
 	//更新
 	void update(@Valid AppliedCompanyList appliedCompanyList);
+
+	void updateStatus(Integer id, Integer status);
 }

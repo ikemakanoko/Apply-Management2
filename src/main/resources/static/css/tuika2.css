@@ -47,8 +47,27 @@ button {
     margin-left: 10px;
 }
 
+button-2 {
+    background-color: #007bff;
+    padding: 10px 20px;
+    position: right;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
 button:hover {
     background-color: #0056b3;
+}
+
+do{
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 ul {

@@ -18,14 +18,15 @@
 	<main>
 		<form th:action="@{/appliedCompanyEdit/{id}(id=${appliedCompanyList.id})}" method="post"
 			th:object="${appliedCompanyList}" class="edit-form">
-			
-			<div class="form-group">
-				<label for="status">応募ステータス：</label>
-				<input type="text" id="status" th:field="*{status}">
-				<p th:errors="*{status}" class="error-message"></p>
-<!--				statusidが取得できるから、その番号をもとにstatusテーブルのidに対応するステータスを文字で表示する-->
-			</div>
-			
+
+			<select name="status">
+				<option value="*{statusid}">
+				<th:block th:each="status : ${statusList}">
+					[[${status.status}]]
+				</th:block>
+				</option>
+			</select>
+
 			<div class="form-group">
 				<label for="name">企業名：</label>
 				<input type="text" id="name" th:field="*{name}">
@@ -61,7 +62,7 @@
 				<input type="time" id="workingTime" th:field="*{workingTime}">
 				<p th:errors="*{workingTime}" class="error-message"></p>
 			</div>
-			
+
 			<div class="form-group">
 				<label for="workingTime2">労働時間(終了)：</label>
 				<input type="time" id="workingTime2" th:field="*{workingTime2}">
@@ -73,7 +74,7 @@
 				<input type="text" id="applied" th:field="*{applied}">
 				<p th:errors="*{applied}" class="error-message"></p>
 			</div>
-			
+
 			<div class="form-group">
 				<label for="url">会社ホームページURL：</label>
 				<input type="text" id="url" th:field="*{url}">

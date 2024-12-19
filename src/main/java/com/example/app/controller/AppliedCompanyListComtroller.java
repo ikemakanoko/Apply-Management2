@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.app.domain.AppliedCompanyList;
+import com.example.app.domain.StatusList;
 import com.example.app.mapper.AppliedCompanyMapper;
+import com.example.app.mapper.StatusMapper;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class AppliedCompanyListComtroller {
 
 	private final AppliedCompanyMapper appliedCompanyListMapper;
-//	private final StatusMapper statusListMapper;
+	private final StatusMapper statusListMapper;
 	//appliedCompanyListMapperはAppliedCompanyMapperを利用するためのフィールド
 	//AppliedCompanyMapperは機能の集合
 
@@ -34,8 +36,11 @@ public class AppliedCompanyListComtroller {
 	public String list(Model model) {
 		// "top" は src/main/resources/templates/top.html に対応
 		List<AppliedCompanyList> appliedCompanies = appliedCompanyListMapper.selectAll();
+		List<StatusList> statuses = statusListMapper.selectAll();
 //		List<StatusList> statuses = statusListMapper.selectAll();
+		model.addAttribute("appliedCompanyList", new AppliedCompanyList());
 		model.addAttribute("appliedCompanyLists", appliedCompanies);
+		model.addAttribute("statuss", statuses);
 //		model.addAttribute("statusLists", statuses);
 		
 		//appliedcompanyテーブルとstatusテーブルの一覧の取得
@@ -57,6 +62,7 @@ public class AppliedCompanyListComtroller {
 	//新規登録
 	@GetMapping("/appliedCompanyInsert")
 	public String addGet(Model model) {
+//		List<StatusList> statuses = statusListMapper.selectAll();
 		model.addAttribute("appliedCompanyList", new AppliedCompanyList());
 		//AppliedCompanyListとappliedCompanyListは対応している。
 		//appliedCompanyListをHTMLで使う
@@ -110,7 +116,9 @@ public class AppliedCompanyListComtroller {
 	@GetMapping("/appliedCompanyEdit/{id}")
 	public String updateGet(@PathVariable("id") Integer id, Model model) {
 	    AppliedCompanyList appliedCompanyList = appliedCompanyListMapper.selectById(id);
+	    StatusList statusLists = statusListMapper.selectById(id);
 	    model.addAttribute("appliedCompanyList", appliedCompanyList);
+	    model.addAttribute("statusList", statusLists);
 	    return "appliedCompanyEdit"; // ビュー名
 	    
 	}
@@ -133,4 +141,34 @@ public class AppliedCompanyListComtroller {
 		appliedCompanyListMapper.update(appliedCompanyList);
 		return "editedCompany";// 完了ページに遷移
 	}
+	
+	//ステータス変更完了画面表示
+		@GetMapping("updateStatus")
+		public String statusDetail(@RequestParam("id") Integer id,
+				Model model) {
+			AppliedCompanyList company = appliedCompanyListMapper.selectById(id);
+			//多分ここで結合したstatusをid,statusidと紐づけて、
+			//statusidの番号に対応することば（選考辞退など）を表示させるロジックが必要
+			model.addAttribute("appliedCompany", company);
+			return "updateStatus";
+		}
+	
+	//ステータス変更
+		@GetMapping("/updateStatus/{id}")
+		public String updateStatusGet(@PathVariable("id") Integer id, Model model) {
+		    AppliedCompanyList appliedCompanyList = appliedCompanyListMapper.selectById(id);
+		    model.addAttribute("appliedCompanyList", appliedCompanyList);
+		    return "updateStatus"; // ビュー名
+		    
+		}
+
+		@PostMapping("/updateStatus")
+		public String updateStatus(
+				@Valid StatusList statusList,
+				@RequestParam("id") Integer id,
+				Model model) {
+		    // IDに基づいてステータスを更新
+			statusListMapper.updateStatus(statusList);
+		    return "redirect:/appliedCompanyList"; // 一覧ページにリダイレクト
+		}
 }

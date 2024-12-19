@@ -11,5 +11,12 @@
 		FROM status
 		WHERE id = #{id};
 	</select>
+	
+	<update id="updateStatus" parameterType="StatusList">
+		UPDATE status SET
+		id = #{id},
+		status = #{status}
+		WHERE id = #{id};
+	</update>
 
 </mapper>

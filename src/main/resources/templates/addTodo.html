@@ -22,13 +22,13 @@
 	<!-- 未実行タスク -->
 	<h2>未実行タスク</h2>
 	<ul>
-		<th:block th:each="todo : ${todoss}">
+		<th:block th:each="todo : ${pendingTasks}">
 			<li>
 				<!-- タスク名 -->
 				<span th:text="${todo.taskname}"></span>
 				<!-- 実行済みにするボタン -->
 				<form th:action="@{/updateTodo/{id}(id=${todo.id})}" method="post" style="display:inline;">
-					<button-2 type="submit">実行済みにする</button-2>
+					<button type="submit">実行済みにする</button>
 				</form>
 				<!-- 削除リンク -->
 				<a th:href="@{/deleteTodo/{id}(id=${todo.id})}" style="float: right; color: red;">削除</a>
@@ -39,7 +39,7 @@
 	<!-- 実行済みタスク -->
 	<h2>実行済みタスク</h2>
 	<ul>
-		<th:block th:each="todo : ${todoss}">
+		<th:block th:each="todo : ${completedTasks}">
 			<li>
 				<!-- タスク名 -->
 				<span th:text="${todo.taskname}"></span>

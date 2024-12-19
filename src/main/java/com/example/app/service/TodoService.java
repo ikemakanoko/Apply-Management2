@@ -12,33 +12,33 @@ import com.example.app.mapper.ToDoMapper;
 public class TodoService {
 
 	@Autowired
-	private ToDoMapper toDoMapper;
+	private ToDoMapper toDoLIstMapper;
 
 	public List<Todo> getTasksByExecuted() {
-		return ToDoMapper.selectAllTodos();
+		return toDoLIstMapper.selectAllTodos();
 	}
 
 	public void addTask(String taskname) {
 		Todo task = new Todo();
 		task.setTaskname(taskname);
 		task.setExecuted(0); // 初期値は未実行
-		toDoMapper.save(task);
+		toDoLIstMapper.save(task);
 	}
 
 	public void markAsCompleted(int id) {
-		Todo task = toDoMapper.findById(id);
+		Todo task = toDoLIstMapper.findById(id);
 //		idに対応するタスクが存在すれば、そのタスクがtask変数に代入される
 //		orElseThrow(); 例外をスローする
 		task.setExecuted(1);
 //		タスクのexecutedフィールドに１をセット
 //		ここでexecutedはtinyint型のカラムであり、1は「実行済み」を意味する（0 は未実行）。
-		toDoMapper.save(task);
+		toDoLIstMapper.save(task);
 //		saveメソッドは、エンティティをデータベースに保存するためのJPARepository の標準メソッド。
 //		既に存在するエンティティ（idが存在する）をsaveした場合、データベース上で更新が行われます。
 //		もしidが存在しない場合、新規作成としてデータが挿入されます（今回は既に存在するタスクの更新なので、更新処理が走る）。
 	}
 
 	public void deleteTask(int id) {
-		toDoMapper.deleteById(id);
+		toDoLIstMapper.deleteById(id);
 	}
 }

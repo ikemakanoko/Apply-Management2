@@ -11,21 +11,6 @@
 	<h1>応募企業新規追加</h1>
 	<form action="" method="post" th:object="${appliedCompanyList}">
 
-		<p th:errors="*{status}" class="error-message"></p>
-		<label for="status">応募ステータス：</label>
-		<select id="status" name="status">
-		    <th:block th:each="appliedCompanyList : ${appliedCompanyLists}" 
-		     th:value="${appliedCompany.statusid}" th:text="${appliedCompany.statusid}">
-			応募ステータス:[[${appliedCompany.status}]]
-			</th:block>
-		</select>
-		<button type="submit">送信</button>
-		
-		<p>
-			<label for="status">応募ステータス：</label>
-			<input type="text" id="status" th:field="*{status}">
-		</p>
-
 		<p th:errors="*{name}" class="error-message"></p>
 		<p>
 			<label for="name">企業名：</label>

@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.app.mapper.ToDoMapper">
 
-	<select id="selectAll" resultType="Todo">
-		SELECT * FROM appliedcompany join status on appliedcompany.statusid = status.id
+	<select id="selectAllTodos" resultType="Todo">
+		SELECT * FROM todo
+		
 	</select>
 
 	<insert id="add" parameterType="Todo">

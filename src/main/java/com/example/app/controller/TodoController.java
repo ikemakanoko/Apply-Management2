@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.app.domain.Todo;
+import com.example.app.mapper.ToDoMapper;
 import com.example.app.service.TodoService;
 
 @Controller
@@ -18,13 +19,17 @@ public class TodoController {
 
 	@Autowired
 	private TodoService todoService;
+	private ToDoMapper toDoMapper;
 
 	@GetMapping("/todoList")
 	public String showTodoList(Model model) {
 		// 未実行タスクと実行済みタスクを取得
+		List<Todo> todos = toDoMapper.selectAllTodos();
 		List<Todo> pendingTasks = todoService.getTasksByExecuted();
 		List<Todo> completedTasks = todoService.getTasksByExecuted();
-
+		
+		model.addAttribute("todos", toDoMapper.selectAllTodos());
+		model.addAttribute("todoss", todos);
 		model.addAttribute("pendingTasks", pendingTasks);
 		model.addAttribute("completedTasks", completedTasks);
 
