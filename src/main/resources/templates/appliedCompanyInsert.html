@@ -11,6 +11,28 @@
 	<h1>応募企業新規追加</h1>
 	<form action="" method="post" th:object="${appliedCompanyList}">
 
+		<p th:errors="*{statusid}" class="error-message"></p>
+		<p>
+			<label for="statusid">応募ステータス：</label>
+			<select id="statusid" th:field="*{statusid}" onchange="updateStatusText(this.value)">
+				<option value="">選択してください</option>
+				<option value="1">選考準備中</option>
+				<option value="2">書類選考中</option>
+				<option value="3">書類選考通過</option>
+				<option value="4">一次面接通過</option>
+				<option value="5">二次面接通過</option>
+				<option value="6">一次面接日程調整中</option>
+				<option value="7">二次面接日程調整中</option>
+				<option value="8">最終面接日程調整中</option>
+				<option value="9">一次面接日程調整完了</option>
+				<option value="10">二次面接日程調整完了</option>
+				<option value="11">最終面接日程調整完了</option>
+				<option value="12">選考辞退</option>
+				<option value="13">内定</option>
+				<option value="14">入社待ち</option>
+			</select>
+		</p>
+
 		<p th:errors="*{name}" class="error-message"></p>
 		<p>
 			<label for="name">企業名：</label>
@@ -69,6 +91,75 @@
 
 		<p><a href="/top">戻る</a></p>
 	</form>
+	<script>
+		// JavaScriptの決まり文句
+		function _switch(num) {
+			// もし（数字が0であれば）{
+			if (field == 1) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("選考準備中");;
+			}
+			if (field == 2) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("書類選考中");;
+			}
+			if (field == 3) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("書類選考通過");;
+			}
+			if (field == 4) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("一次面接通過");;
+			}
+			if (field == 5) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("二次面接通過");;
+			}
+			if (field == 6) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("一次面接日程調整中");;
+			}
+			if (field == 7) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("二次面接日程調整中");;
+			}
+			if (field == 8) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("最終面接日程調整中");;
+			}
+			if (field == 9) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("一次面接日程調整完了");;
+			}
+
+			if (field == 10) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("二次面接日程調整完了");;
+			}
+			if (field == 11) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("最終面接日程調整完了");;
+			}
+			if (field == 12) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("選考辞退");;
+			}
+			if (field == 13) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("内定");;
+			}
+			if (field == 14) {
+				// id名textのCSSスタイルをdisplay:block（表示）にする
+				document.getElementById("text").document.write("入社待ち");;
+			}
+			// 　そうでなければ
+			else {
+				// id名textのCSSスタイルをdisplay:none（非表示）にする
+				document.getElementById("text").style.display = "none";
+			}
+		}
+
+	</script>
 </body>
 
 </html>

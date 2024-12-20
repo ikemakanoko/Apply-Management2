@@ -19,13 +19,27 @@
 		<form th:action="@{/appliedCompanyEdit/{id}(id=${appliedCompanyList.id})}" method="post"
 			th:object="${appliedCompanyList}" class="edit-form">
 
-			<select name="status">
-				<option value="*{statusid}">
-				<th:block th:each="status : ${statusList}">
-					[[${status.status}]]
-				</th:block>
-				</option>
-			</select>
+			<p th:errors="*{statusid}" class="error-message"></p>
+			<p>
+				<label for="statusid">応募ステータス：</label>
+				<select id="statusid" th:field="*{statusid}" onchange="updateStatusText(this.value)">
+					<option value="">選択してください</option>
+					<option value="1">選考準備中</option>
+					<option value="2">書類選考中</option>
+					<option value="3">書類選考通過</option>
+					<option value="4">一次面接通過</option>
+					<option value="5">二次面接通過</option>
+					<option value="6">一次面接日程調整中</option>
+					<option value="7">二次面接日程調整中</option>
+					<option value="8">最終面接日程調整中</option>
+					<option value="9">一次面接日程調整完了</option>
+					<option value="10">二次面接日程調整完了</option>
+					<option value="11">最終面接日程調整完了</option>
+					<option value="12">選考辞退</option>
+					<option value="13">内定</option>
+					<option value="14">入社待ち</option>
+				</select>
+			</p>
 
 			<div class="form-group">
 				<label for="name">企業名：</label>

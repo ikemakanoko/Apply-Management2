@@ -11,16 +11,20 @@ import com.example.app.domain.Todo;
 public interface ToDoMapper {
 	List<Todo> selectAllTodos();
 
-	void insertTodo(Todo todo); // レコード挿入
+	void addTodo(Todo todo); // レコード挿入
 
 	void updateTodo(Todo todo); // レコード更新
 
-	void deleteTodo(int id); // レコード削除
+	void deleteById(int id); // レコード削除
 
-	Todo findById(int id);
-
-	void deleteById(int id);
+	Todo selectById(int id);
 	
 	@Insert("INSERT INTO todo (taskname, executed, created_at) VALUES (#{taskname}, #{executed}, #{createdAt})")
     void save(Todo todo);
+
+	void markAsCompleted(int id);
+
+	List<Todo> getTasksByExecuted();
+	
+	List<Todo> getTasksByExecute();
 }

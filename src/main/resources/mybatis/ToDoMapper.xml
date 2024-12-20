@@ -4,14 +4,15 @@
 
 	<select id="selectAllTodos" resultType="Todo">
 		SELECT * FROM todo
-		
+
 	</select>
 
 	<insert id="add" parameterType="Todo">
 		insert into todo
-		(taskname, executed, created_at, updated_at)
-		 values
-		 (#{taskname}, #{executed}, #{createdAt}, #{updatedAt})
+		(taskname,
+		executed, created_at, updated_at)
+		values
+		(#{taskname}, #{executed}, #{createdAt}, #{updatedAt})
 	</insert>
 
 	<select id="selectById" resultType="Todo">
@@ -22,16 +23,41 @@
 	</select>
 
 	<delete id="deleteById" parameterType="Integer">
-		DELETE FROM `syuukatu_db`.`todo` WHERE id = #{id};
+		DELETE FROM
+		`syuukatu_db`.`todo` WHERE id = #{id};
 	</delete>
+
+	<insert id="addTodo" parameterType="map">
+		INSERT INTO todo (taskname)
+		VALUES (#{taskname})
+	</insert>
+
 
 	<update id="update" parameterType="Todo">
 		UPDATE todo SET
-		taskname = #{taskname},
+		taskname =
+		#{taskname},
 		executed = #{executed},
 		created_at = #{createdAt},
 		updated_at = #{updatedAt},
 		WHERE id = #{id};
+	</update>
+
+	<select id="getTasksByExecuted" parameterType="Todo">
+		SELECT *
+		FROM todo
+		WHERE executed = 1;
+	</select>
+
+	<select id="getTasksByExecute" parameterType="Todo">
+		SELECT *
+		FROM todo
+		WHERE executed = 0;
+	</select>
+
+	<update id="markAsCompleted" parameterType="Todo">
+		<!-- 実行済みにする -->
+		UPDATE `syuukatu_db`.`todo` SET `executed` = '1' WHERE (`id` = '45');
 	</update>
 
 </mapper>

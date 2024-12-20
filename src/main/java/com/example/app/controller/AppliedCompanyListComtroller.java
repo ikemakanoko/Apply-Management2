@@ -85,7 +85,7 @@ public class AppliedCompanyListComtroller {
 		if (errors.hasErrors()) {
 			model.addAttribute("appliedCompanyLists", appliedCompanyList); // 入力された値を維持
 			System.out.println(errors);
-			return "/appliedCompanyInsert";
+			return "appliedCompanyInsert";
 		}
 		//System.out.println(appliedCompanyList);
 		// バリデーションが通った場合はデータを保存

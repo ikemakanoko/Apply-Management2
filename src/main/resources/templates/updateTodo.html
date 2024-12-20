@@ -12,7 +12,7 @@
 	<h1>TODOリスト</h1>
 
 	<!-- タスク追加フォーム -->
-	<form th:action="@{/addTodo}" method="post">
+	<form class="form1" th:action="@{/addTodo}" method="post">
 		<p>Todo:
 			<input type="text" name="taskname" placeholder="タスク名を入力" />
 			<button type="submit">追加</button>
@@ -27,7 +27,7 @@
 				<!-- タスク名 -->
 				<span th:text="${todo.taskname}"></span>
 				<!-- 実行済みにするボタン -->
-				<form th:action="@{/updateTodo/{id}(id=${todo.id})}" method="post" style="display:inline;">
+				<form class="form2" th:action="@{/updateTodo/{id}(id=${todo.id})}" method="post" style="display:inline;">
 					<button type="submit">実行済みにする</button>
 				</form>
 				<!-- 削除リンク -->
