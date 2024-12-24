@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.app.domain.AppliedCompanyList;
 import com.example.app.domain.StatusList;
 
 import jakarta.validation.Valid;
@@ -24,5 +25,5 @@ public interface StatusMapper {
 	void deleteById(int id);
 
 	//更新
-	void updateStatus(@Valid StatusList statusList);
+	AppliedCompanyList updateStatus(@Valid Integer id);
 }

@@ -1,4 +1,29 @@
 // ページ読込完了後にボタンにclickイベントを登録する
+document.addEventListener("DOMContentLoaded", () => {
+    const openButtons = document.querySelectorAll(".open-modal");
+    const closeButtons = document.querySelectorAll(".close-button");
+
+    openButtons.forEach(button => {
+        button.addEventListener("click", event => {
+            event.preventDefault();
+            const modalId = button.getAttribute("data-modal-id");
+            document.getElementById(`modal-${modalId}`).style.display = "block";
+        });
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener("click", event => {
+            const modalId = button.getAttribute("data-modal-id");
+            document.getElementById(`modal-${modalId}`).style.display = "none";
+        });
+    });
+
+    window.addEventListener("click", event => {
+        if (event.target.classList.contains("modal")) {
+            event.target.style.display = "none";
+        }
+    });
+});
 window.addEventListener("load", function() {
 	document.getElementById("send_mixdata").addEventListener("click", function() {
 		// FoemDataオブジェクトに要素セレクタを渡して宣言する
@@ -29,25 +54,3 @@ window.addEventListener("load", function() {
 		};
 	}, false);
 }, false);
-
-//＜HTML＞
-//<form id="userinfo2">
-//  <p>
-//    <label for="item1">名前</label>
-//    <input name="name" id="item1">
-//  </p>
-//  <p>
-//    <label for="item2">年齢</label>
-//    <input name="old" id="item2">
-//  </p>
-//  <p>
-//    <label for="item3">住所</label>
-//    <input name="address" id="item3">
-//  </p>
-//</form>
-//<p>
-//  <button type="button" id="send_mixdata">入力値と固定値を送信する</button>
-//</p>
-//<div id="mixdata_response">
-//  <!-- 結果を出力する -->
-//</div>

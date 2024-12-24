@@ -18,45 +18,44 @@
 		<div class="company-info">
 			
 			<p><strong>応募ステータス:</strong>
-				<span th:text="*{appliedCompany.statusid}"></span>
+				<span th:text="${appliedCompany.status}"></span>
 			</p>
-
 			<!--			appliedCompany.statusidの番号に対応する-->
 
 			<p><strong>企業名:</strong>
-				<span th:text="*{appliedCompany.name}">株式会社サンプル</span>
+				<span th:text="${appliedCompany.name}">株式会社サンプル</span>
 			</p>
 
 			<p><strong>創立年:</strong>
-				<span th:text="*{appliedCompany.established}">2000-01-01</span>
+				<span th:text="${appliedCompany.established}">2000-01-01</span>
 			</p>
 
 			<p><strong>社長:</strong>
-				<span th:text="*{appliedCompany.president}">山田太郎</span>
+				<span th:text="${appliedCompany.president}">山田太郎</span>
 			</p>
 
 			<p><strong>給料:</strong>
-				<span th:text="'月給 ' + *{appliedCompany.salaly} + '円'">500万円</span>
+				<span th:text="'月給 ' + ${appliedCompany.salaly} + '円'">500万円</span>
 			</p>
 
 			<p><strong>労働時間:</strong>
-				<span th:text="*{appliedCompany.workingTime} + '～' + *{appliedCompany.workingTime2}">09:00 ~
+				<span th:text="${appliedCompany.workingTime} + '～' + *{appliedCompany.workingTime2}">09:00 ~
 					18:00</span>
 			</p>
 
 			<p><strong>どこから応募:</strong>
-				<span th:text="*{appliedCompany.applied}">マイナビ</span>
+				<span th:text="${appliedCompany.applied}">マイナビ</span>
 			</p>
 
 			<p><strong>会社ホームページURL:</strong>
 				<a href="">
-					<span th:text="*{appliedCompany.url}">マイナビ</span>
+					<span th:text="${appliedCompany.url}">マイナビ</span>
 				</a>
 			</p>
 
 			<p><strong>詳細説明メモ:</strong>
 
-				<span th:text="*{appliedCompany.detail}">詳細な説明がここに入ります。</span>
+				<span th:text="${appliedCompany.detail}">詳細な説明がここに入ります。</span>
 			</p>
 		</div>
 

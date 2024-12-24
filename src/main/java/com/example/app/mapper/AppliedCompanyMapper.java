@@ -3,6 +3,7 @@ package com.example.app.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.app.domain.AppliedCompanyList;
 
@@ -25,5 +26,9 @@ public interface AppliedCompanyMapper {
 	//更新
 	void update(@Valid AppliedCompanyList appliedCompanyList);
 
-	void updateStatus(Integer id, Integer status);
+	void updateStatus(int id);
+
+//	void updateStatusById(int id, int statusId);
+//	
+	void updateStatusById(@Param("id") int id, @Param("statusId") int statusId);
 }

@@ -52,10 +52,16 @@ public class AppliedCompanyListComtroller {
 	@GetMapping("/appliedCompanyDetail")
 	public String detail(@RequestParam("id") Integer id,
 			Model model) {
+		List<AppliedCompanyList> appliedCompanies = appliedCompanyListMapper.selectAll();
+		List<StatusList> statuses = statusListMapper.selectAll();
 		AppliedCompanyList company = appliedCompanyListMapper.selectById(id);
+		StatusList status = statusListMapper.selectById(id);
 		//多分ここで結合したstatusをid,statusidと紐づけて、
 		//statusidの番号に対応することば（選考辞退など）を表示させるロジックが必要
+		model.addAttribute("atatuses", status);
 		model.addAttribute("appliedCompany", company);
+		model.addAttribute("appliedCompanyLists", appliedCompanies);
+		model.addAttribute("statuss", statuses);
 		return "appliedCompanyDetail";
 	}
 
@@ -141,34 +147,39 @@ public class AppliedCompanyListComtroller {
 		appliedCompanyListMapper.update(appliedCompanyList);
 		return "editedCompany";// 完了ページに遷移
 	}
-	
-	//ステータス変更完了画面表示
-		@GetMapping("updateStatus")
-		public String statusDetail(@RequestParam("id") Integer id,
-				Model model) {
-			AppliedCompanyList company = appliedCompanyListMapper.selectById(id);
-			//多分ここで結合したstatusをid,statusidと紐づけて、
-			//statusidの番号に対応することば（選考辞退など）を表示させるロジックが必要
-			model.addAttribute("appliedCompany", company);
-			return "updateStatus";
-		}
-	
-	//ステータス変更
-		@GetMapping("/updateStatus/{id}")
-		public String updateStatusGet(@PathVariable("id") Integer id, Model model) {
-		    AppliedCompanyList appliedCompanyList = appliedCompanyListMapper.selectById(id);
-		    model.addAttribute("appliedCompanyList", appliedCompanyList);
-		    return "updateStatus"; // ビュー名
-		    
-		}
 
-		@PostMapping("/updateStatus")
-		public String updateStatus(
-				@Valid StatusList statusList,
-				@RequestParam("id") Integer id,
-				Model model) {
-		    // IDに基づいてステータスを更新
-			statusListMapper.updateStatus(statusList);
-		    return "redirect:/appliedCompanyList"; // 一覧ページにリダイレクト
-		}
+//	//追加完了画面
+//	@GetMapping("/appliedCompanyList/{id}")
+//	public String showupdateStatusFormPage() {
+//		// deleteCompany2.htmlを返す
+//		return "appliedCompanyList/{id}";
+//	}
+	
+	@GetMapping("/updateStatus/{id}")
+	public String showUpdateStatusFormPage(@PathVariable int id, Model model) {
+	    // 対象企業の情報を取得し、ビューに渡す
+	    AppliedCompanyList company = appliedCompanyListMapper.selectById(id);
+	    model.addAttribute("company", company);
+	    // ステータス一覧もモデルに追加する
+	    List<StatusList> statusList = statusListMapper.selectAll();  // ステータス一覧を取得
+	    model.addAttribute("statusList", statusList);
+	    return "updateStatusForm";  // ステータス変更フォームのビュー名を返す
+	}
+
+
+    // ステータス変更処理（POSTリクエスト）
+//    @PostMapping("/appliedCompanyList/{id}")
+//    public String updateStatusForm(@PathVariable int id, @RequestParam("status") int statusId) {
+//        appliedCompanyListMapper.updateStatusById(id, statusId);
+//        return "redirect:/appliedCompanyList"; // 一覧ページにリダイレクト
+//    }
+	@PostMapping("/updateStatus/{id}")
+	public String updateStatus(@PathVariable
+			int id, @RequestParam("status")
+			int statusId) {
+	    appliedCompanyListMapper.updateStatusById(id, statusId);
+	    return "redirect:/appliedCompanyList";  // 更新後、一覧ページにリダイレクト
+	}
+
+		
 }

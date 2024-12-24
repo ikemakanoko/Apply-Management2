@@ -27,4 +27,6 @@ public interface ToDoMapper {
 	List<Todo> getTasksByExecuted();
 	
 	List<Todo> getTasksByExecute();
+	
+	
 }
