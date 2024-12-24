@@ -26,9 +26,9 @@
 				<!--			<div class="company-item">-->
 				<!-- 応募ステータスの表示 -->
 				<h2>応募ステータス: <a href="#" th:attr="data-modal-id=${appliedCompany.id}" class="open-modal"
-						data-company-name="${appliedCompany.name}" data-company-id="${appliedCompany.id}" th:text="${appliedCompany.status}">ステータス</a></h2>
-
-
+						data-company-name="${appliedCompany.name}" data-company-id="${appliedCompany.id}"
+						th:text="${appliedCompany.status}">ステータス</a></h2>
+						
 				<!--モーダルゾーン-->
 				<div th:attr="id='modal-' + ${appliedCompany.id}" class="modal">
 					<div class="modal-content">

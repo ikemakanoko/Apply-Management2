@@ -76,3 +76,16 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+footer {
+	text-align: center;
+	padding: 10px 20px;
+	background-color: #c0c0c0;
+	border-top: 1px solid #ddd;
+	font-size: 14px;
+	color: #666;
+	padding: 10px 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
