@@ -12,7 +12,8 @@
 		(taskname,
 		executed, created_at, updated_at)
 		values
-		(#{taskname}, #{executed}, #{createdAt}, #{updatedAt})
+		(#{taskname}, #{executed},
+		#{createdAt}, #{updatedAt})
 	</insert>
 
 	<select id="selectById" resultType="Todo">
@@ -57,7 +58,9 @@
 
 	<update id="markAsCompleted" parameterType="Todo">
 		<!-- 実行済みにする -->
-		UPDATE `syuukatu_db`.`todo` SET `executed` = '1' WHERE (`id` = '45');
+		UPDATE `syuukatu_db`.`todo`
+		SET `executed` = '1'
+		WHERE `id` = #{id};
 	</update>
 
 </mapper>

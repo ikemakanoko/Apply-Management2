@@ -32,22 +32,17 @@ public class TodoController {
 
 		model.addAttribute("todos", toDoMapper.selectAllTodos());
 		model.addAttribute("todoss", todos);
+		//completedTasks(実行済みタスク)　pendingTasks(未実行タスク)
 		model.addAttribute("pendingTasks", pendingTasks);
 		model.addAttribute("completedTasks", completedTasks);
 
 		return "todoList";
 	}
 
-	@PostMapping("/updateTodo/{id}")
-	public String updateTodo(@PathVariable int id) {
-		toDoMapper.markAsCompleted(id);
-		return "redirect:/";
-	}
-
 	@GetMapping("/deleteTodo/{id}")
 	public String deleteTodo(@PathVariable int id) {
 		toDoMapper.deleteById(id);
-		return "deleteTodo";
+		return "redirect:/todoList";
 	}
 
 	//	public List<Todo> getTasksByExecuted() {
@@ -85,20 +80,29 @@ public class TodoController {
 		//System.out.println(appliedCompanyList);
 		// バリデーションが通った場合はデータを保存
 		toDoMapper.addTodo(todo);
-		return "addTodo"; // 完了ページに遷移
+		return "redirect:/todoList"; // 完了ページに遷移
+	}
+	
+	//実行済みボタンを押したら、SQL、getTasksByExecutedが実行されるようにする
+	//SQL,getTasksByExecutedを下に表示できるようにする
+	//completedTasks(実行済みタスク)　pendingTasks(未実行タスク)
+	
+	@GetMapping("/updateTodo/{id}")
+	public String markAsCompleted(Model model) {
+		model.addAttribute("todo", new Todo());
+//		Todo todo = new Todo();
+//		todo.setTaskname(taskname);
+//		Todo todo2 = new Todo();
+//		todo2.setExecuted(0); // 初期値は未実行
+//		toDoMapper.save(null);
+		return "updateTodo";
+	}
+	
+	@PostMapping("/updateTodo/{id}")
+	public String markAsCompleted(@PathVariable int id) {
+	    // `id`を用いてタスクを実行済みに更新
+	    toDoMapper.markAsCompleted(id);
+	    return "redirect:/todoList"; // 更新後にタスクリストページへリダイレクト
 	}
 
-	public void markAsCompleted(int id) {
-		//実行済みにする
-		Todo task = toDoMapper.selectById(id);
-		//		idに対応するタスクが存在すれば、そのタスクがtask変数に代入される
-		//		orElseThrow(); 例外をスローする
-		task.setExecuted(1);
-		//		タスクのexecutedフィールドに１をセット
-		//		ここでexecutedはtinyint型のカラムであり、1は「実行済み」を意味する（0 は未実行）。
-		toDoMapper.save(task);
-		//		saveメソッドは、エンティティをデータベースに保存するためのJPARepository の標準メソッド。
-		//		既に存在するエンティティ（idが存在する）をsaveした場合、データベース上で更新が行われます。
-		//		もしidが存在しない場合、新規作成としてデータが挿入されます（今回は既に存在するタスクの更新なので、更新処理が走る）。
-	}
 }

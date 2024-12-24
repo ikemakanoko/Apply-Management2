@@ -12,12 +12,14 @@
 	<h1>TODOリスト</h1>
 
 	<!-- タスク追加フォーム -->
-	<form th:action="@{/addTodo}" method="post">
-		<p>Todo:
-			<input type="text" name="taskname" placeholder="タスク名を入力" />
-			<button type="submit">追加</button>
-		</p>
-	</form>
+	<div class="container">
+		<form th:action="@{/addTodo}" method="post">
+			<p>Todo:
+				<input type="text" name="taskname" placeholder="タスク名を入力" />
+				<button type="submit">追加</button>
+			</p>
+		</form>
+	</div>
 
 	<!-- 未実行タスク -->
 	<h2>未実行タスク</h2>
@@ -28,9 +30,9 @@
 				<span th:text="${todo.taskname}"></span>
 				<!-- 実行済みにするボタン -->
 				<div　class="button2">
-				<form th:action="@{/updateTodo/{id}(id=${todo.id})}" method="post" style="display:inline;">
-					<button type="submit">実行済みにする</button>
-				</form>
+					<form th:action="@{/updateTodo/{id}(id=${todo.id})}" method="post" style="display:inline;">
+						<button type="submit">実行済みにする</button>
+					</form>
 				</div>
 				<!-- 削除リンク -->
 				<a th:href="@{/deleteTodo/{id}(id=${todo.id})}" style="float: right; color: red;">削除</a>
@@ -42,6 +44,7 @@
 	<h2>実行済みタスク</h2>
 	<ul>
 		<th:block th:each="todo : ${completedTasks}">
+			<!--			completedTasksをControllerで作る-->
 			<li>
 				<!-- タスク名 -->
 				<span th:text="${todo.taskname}"></span>
