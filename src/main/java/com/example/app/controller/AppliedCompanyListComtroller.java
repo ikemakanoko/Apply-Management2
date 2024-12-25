@@ -62,6 +62,7 @@ public class AppliedCompanyListComtroller {
 		model.addAttribute("appliedCompany", company);
 		model.addAttribute("appliedCompanyLists", appliedCompanies);
 		model.addAttribute("statuss", statuses);
+//		System.out.println("company->"+company);
 		return "appliedCompanyDetail";
 	}
 

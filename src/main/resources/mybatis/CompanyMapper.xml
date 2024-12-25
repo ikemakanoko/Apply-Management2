@@ -20,9 +20,8 @@
 	</insert>
 
 	<select id="selectById">
-		SELECT *
-		FROM appliedcompany
-		WHERE id = #{id};
+		SELECT * FROM appliedcompany
+		join status on appliedcompany.statusid = status.id where appliedcompany.id = #{id};
 	</select>
 
 	<delete id="deleteById" parameterType="AppliedCompanyList">
