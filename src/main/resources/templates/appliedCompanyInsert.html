@@ -16,7 +16,7 @@
 			<!--プルダウンメニュー-->
 			<label for="statusid">応募ステータス：</label>
 			<select id="statusid" th:field="*{statusid}" onchange="updateStatusText(this.value)">
-				<option value="">選択してください</option>
+				<option value="" disabled selected>選択してください</option>
 				<option value="1">選考準備中</option>
 				<option value="2">書類選考中</option>
 				<option value="3">書類選考通過</option>
