@@ -26,9 +26,5 @@ public interface AppliedCompanyMapper {
 	//更新
 	void update(@Valid AppliedCompanyList appliedCompanyList);
 
-	void updateStatus(int id);
-
-//	void updateStatusById(int id, int statusId);
-//	
 	void updateStatusById(@Param("id") int id, @Param("statusId") int statusId);
 }

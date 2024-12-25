@@ -16,7 +16,7 @@
 	</header>
 	<main class="company-detail">
 		<div class="company-info">
-			
+
 			<p><strong>応募ステータス:</strong>
 				<span th:text="${appliedCompany.status}"></span>
 			</p>
@@ -42,7 +42,7 @@
 				<span th:text="${appliedCompany.workingTime} + '～' + *{appliedCompany.workingTime2}">09:00 ~
 					18:00</span>
 			</p>
-
+			
 			<p><strong>どこから応募:</strong>
 				<span th:text="${appliedCompany.applied}">マイナビ</span>
 			</p>

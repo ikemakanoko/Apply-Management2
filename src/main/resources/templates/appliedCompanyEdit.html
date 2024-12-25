@@ -21,6 +21,7 @@
 
 			<p th:errors="*{statusid}" class="error-message"></p>
 			<p>
+				<!--ステータスをプルダウンメニューで-->
 				<label for="statusid">応募ステータス：</label>
 				<select id="statusid" th:field="*{statusid}" onchange="updateStatusText(this.value)">
 					<option value="">選択してください</option>
@@ -73,13 +74,13 @@
 
 			<div class="form-group">
 				<label for="workingTime">労働時間(開始)：</label>
-				<input type="time" id="workingTime" th:field="*{workingTime}">
+				<input type="time" step="900" id="workingTime" th:field="*{workingTime}">
 				<p th:errors="*{workingTime}" class="error-message"></p>
 			</div>
 
 			<div class="form-group">
 				<label for="workingTime2">労働時間(終了)：</label>
-				<input type="time" id="workingTime2" th:field="*{workingTime2}">
+				<input type="time" step="900" id="workingTime2" th:field="*{workingTime2}">
 				<p th:errors="*{workingTime2}" class="error-message"></p>
 			</div>
 
@@ -99,7 +100,9 @@
 				<input type="submit" class="btn btn-primary" value="変更">
 				<a href="/appliedCompanyList" class="btn btn-secondary">戻る</a>
 			</div>
+
 			<br><br>
+
 			<div class="delete-action">
 				<a th:href="@{/deleteCompany2/{id}(id=${appliedCompanyList.id})}" class="btn btn-danger">応募企業情報を全て削除</a>
 			</div>
@@ -108,6 +111,7 @@
 			<p><a href="/top">トップページ</a></p>
 		</footer>
 	</main>
+	
 	<noscript>
 		<h1>JavaScriptを有効にしてください。</h1>
 	</noscript>

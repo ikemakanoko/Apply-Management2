@@ -22,6 +22,7 @@
 	</div>
 
 	<!-- 未実行タスク -->
+	
 	<h2>未実行タスク</h2>
 	<ul>
 		<th:block th:each="todo : ${pendingTasks}">
@@ -37,6 +38,7 @@
 				<!-- 削除リンク -->
 				<a th:href="@{/deleteTodo/{id}(id=${todo.id})}" style="float: right; color: red;">削除</a>
 			</li>
+		<h4 th:text="'⇧追加日時： ' + ${todo.createdAt}"></h4>
 		</th:block>
 	</ul>
 

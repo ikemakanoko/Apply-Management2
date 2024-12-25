@@ -45,18 +45,9 @@ public class TodoController {
 		return "redirect:/todoList";
 	}
 
-	//	public List<Todo> getTasksByExecuted() {
-	//		return toDoMapper.selectAllTodos();
-	//	}
-
 	@GetMapping("/addTodo")
 	public String addTodo(Model model) {
 		model.addAttribute("todo", new Todo());
-//		Todo todo = new Todo();
-//		todo.setTaskname(taskname);
-//		Todo todo2 = new Todo();
-//		todo2.setExecuted(0); // 初期値は未実行
-//		toDoMapper.save(null);
 		return "addTodo";
 	}
 
@@ -82,27 +73,18 @@ public class TodoController {
 		toDoMapper.addTodo(todo);
 		return "redirect:/todoList"; // 完了ページに遷移
 	}
-	
-	//実行済みボタンを押したら、SQL、getTasksByExecutedが実行されるようにする
-	//SQL,getTasksByExecutedを下に表示できるようにする
-	//completedTasks(実行済みタスク)　pendingTasks(未実行タスク)
-	
+
 	@GetMapping("/updateTodo/{id}")
 	public String markAsCompleted(Model model) {
 		model.addAttribute("todo", new Todo());
-//		Todo todo = new Todo();
-//		todo.setTaskname(taskname);
-//		Todo todo2 = new Todo();
-//		todo2.setExecuted(0); // 初期値は未実行
-//		toDoMapper.save(null);
 		return "updateTodo";
 	}
-	
+
 	@PostMapping("/updateTodo/{id}")
 	public String markAsCompleted(@PathVariable int id) {
-	    // `id`を用いてタスクを実行済みに更新
-	    toDoMapper.markAsCompleted(id);
-	    return "redirect:/todoList"; // 更新後にタスクリストページへリダイレクト
+		// `id`を用いてタスクを実行済みに更新
+		toDoMapper.markAsCompleted(id);
+		return "redirect:/todoList"; // 更新後にタスクリストページへリダイレクト
 	}
 
 }

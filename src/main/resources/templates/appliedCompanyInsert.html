@@ -13,6 +13,7 @@
 
 		<p th:errors="*{statusid}" class="error-message"></p>
 		<p>
+			<!--プルダウンメニュー-->
 			<label for="statusid">応募ステータス：</label>
 			<select id="statusid" th:field="*{statusid}" onchange="updateStatusText(this.value)">
 				<option value="">選択してください</option>
