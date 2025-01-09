@@ -112,12 +112,12 @@
 			<scope>test</scope>
 		</dependency>
 
-
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.example</groupId>
 			<artifactId>SFWP09.MyBatisPractice</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
+		
 	</dependencies>
 
 	<build>
